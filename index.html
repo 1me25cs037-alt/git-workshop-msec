@@ -1,0 +1,811 @@
+Here is the complete `index.html` code for your Hidden Atlas – Personal Travel Blog website.
+
+You can also download the ready-made file here: Download index.html
+
+To use it, copy the code below into a file named `index.html` and open it in your browser.
+
+```
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hidden Atlas - Find the Unfound</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --paper: #f7f5ef;
+      --ink: #20352d;
+      --muted: #718078;
+      --green: #315d4b;
+      --lime: #d9e6b7;
+      --orange: #d9774c;
+      --white: #fffefa;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 48px));
+      margin: auto;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #e5e2d8;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      background: var(--green);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    .links {
+      display: flex;
+      gap: 30px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border: 1px solid var(--green);
+      border-radius: 30px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* HERO SECTION */
+
+    .hero {
+      padding: 70px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .eyebrow {
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 6vw, 76px);
+      line-height: 1.05;
+      margin: 20px 0;
+    }
+
+    h1 em {
+      color: var(--green);
+    }
+
+    .hero-copy {
+      color: #66756d;
+      line-height: 1.8;
+      font-size: 15px;
+      max-width: 440px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      padding: 15px 22px;
+      border-radius: 30px;
+      margin-top: 20px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #244638;
+    }
+
+    .hero-photo {
+      height: 410px;
+      overflow: hidden;
+      border-radius: 48% 48% 12px 12px;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* BLOG SECTION */
+
+    .featured {
+      padding: 60px 0;
+      border-top: 1px solid #e5e2d8;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* FILTER BUTTONS */
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    .filter {
+      background: transparent;
+      border: 1px solid #d9ded4;
+      border-radius: 30px;
+      padding: 10px 16px;
+      cursor: pointer;
+      color: var(--green);
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: var(--green);
+      color: white;
+    }
+
+    /* BLOG CARDS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .post {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px #20352d15;
+    }
+
+    .post-image {
+      height: 220px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .post-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 30px;
+      font-size: 10px;
+      color: var(--green);
+    }
+
+    .post-body {
+      padding: 20px;
+    }
+
+    .meta {
+      color: #8a958e;
+      font-size: 10px;
+    }
+
+    .post h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      margin: 12px 0;
+    }
+
+    .post p {
+      color: #758078;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .read {
+      color: var(--green);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* QUOTE */
+
+    .quote-band {
+      background: var(--green);
+      color: white;
+      padding: 65px 25px;
+      text-align: center;
+    }
+
+    .quote-band blockquote {
+      max-width: 750px;
+      margin: auto;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      line-height: 1.4;
+    }
+
+    /* ABOUT SECTION */
+
+    .about {
+      padding: 80px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      height: 350px;
+      overflow: hidden;
+      border-radius: 10px 100px 10px 10px;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    .signature {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 24px;
+      color: var(--green);
+    }
+
+    /* NEWSLETTER */
+
+    .newsletter {
+      background: #e9eddf;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: 36px;
+    }
+
+    .newsletter p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .subscribe {
+      display: flex;
+      width: min(440px, 100%);
+      margin: 25px auto;
+      background: white;
+      padding: 5px;
+      border-radius: 40px;
+    }
+
+    .subscribe input {
+      flex: 1;
+      min-width: 0;
+      border: none;
+      outline: none;
+      padding: 12px;
+      background: transparent;
+    }
+
+    .subscribe button {
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 12px 18px;
+      cursor: pointer;
+    }
+
+    #form-message {
+      color: var(--green);
+      font-size: 12px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    @media(max-width: 800px) {
+      .hero,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width: 560px) {
+      .links {
+        gap: 12px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        padding: 40px 0;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .quote-band blockquote {
+        font-size: 24px;
+      }
+
+      .subscribe {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <header>
+    <div class="wrap nav">
+
+      <a class="brand" href="#home">
+        <span class="brand-mark">✳</span>
+        hidden atlas
+      </a>
+
+      <nav class="links">
+        <a href="#stories">Stories</a>
+        <a href="#about">About</a>
+        <a href="#newsletter">Postcards</a>
+      </nav>
+
+      <a class="nav-cta" href="#newsletter">
+        Get the newsletter ↗
+      </a>
+
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- HERO SECTION -->
+
+    <section class="wrap hero">
+
+      <div>
+        <div class="eyebrow">
+          A travel journal for the curious
+        </div>
+
+        <h1>
+          Find the <em>unfound.</em><br>
+          Feel the world.
+        </h1>
+
+        <p class="hero-copy">
+          Little-known places. Slow mornings. Roads that lead
+          somewhere unexpected. Come along as we uncover
+          the beautiful corners of the world.
+        </p>
+
+        <a href="#stories" class="btn">
+          Explore the stories ↗
+        </a>
+      </div>
+
+      <div class="hero-photo">
+        <img
+          src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1100&q=85"
+          alt="Beautiful mountain lake">
+      </div>
+
+    </section>
+
+    <!-- BLOG STORIES -->
+
+    <section class="featured" id="stories">
+
+      <div class="wrap">
+
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">The travel journal</div>
+            <h2>Places worth the detour.</h2>
+          </div>
+
+          <p>Fresh stories from the road.</p>
+        </div>
+
+        <!-- FILTER BUTTONS -->
+
+        <div class="filters">
+          <button class="filter active" data-filter="all">
+            All stories
+          </button>
+
+          <button class="filter" data-filter="coast">
+            Coastal escapes
+          </button>
+
+          <button class="filter" data-filter="mountains">
+            Mountain hideaways
+          </button>
+
+          <button class="filter" data-filter="culture">
+            Culture & corners
+          </button>
+        </div>
+
+        <!-- BLOG CARDS -->
+
+        <div class="grid" id="post-grid">
+
+          <article class="post" data-category="coast">
+
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=900&q=80" alt="Greek coastal village">
+              <span class="tag">Coastal escapes</span>
+            </div>
+
+            <div class="post-body">
+              <div class="meta">GREECE · 6 MIN READ</div>
+              <h3>The quieter side of Milos</h3>
+              <p>
+                Whitewashed lanes, secret coves and long lunches
+                where nobody checks the time.
+              </p>
+              <a href="#newsletter" class="read">Read the story →</a>
+            </div>
+
+          </article>
+
+          <article class="post" data-category="mountains">
+
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=80" alt="Mountain peaks">
+              <span class="tag">Mountain hideaways</span>
+            </div>
+
+            <div class="post-body">
+              <div class="meta">INDIA · 8 MIN READ</div>
+              <h3>A slower trail through Tirthan</h3>
+              <p>
+                Follow the river into pine forests, wooden villages
+                and the kind of quiet you can feel.
+              </p>
+              <a href="#newsletter" class="read">Read the story →</a>
+            </div>
+
+          </article>
+
+          <article class="post" data-category="culture">
+
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80" alt="Beautiful old architecture">
+              <span class="tag">Culture & corners</span>
+            </div>
+
+            <div class="post-body">
+              <div class="meta">PORTUGAL · 5 MIN READ</div>
+              <h3>Postcards from old Porto</h3>
+              <p>
+                Tiled streets, tiny bookshops and neighbourhood
+                cafés that feel like a second home.
+              </p>
+              <a href="#newsletter" class="read">Read the story →</a>
+            </div>
+
+          </article>
+
+          <article class="post" data-category="coast">
+
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80" alt="Beautiful beach">
+              <span class="tag">Coastal escapes</span>
+            </div>
+
+            <div class="post-body">
+              <div class="meta">INDONESIA · 7 MIN READ</div>
+              <h3>Where Bali goes quiet</h3>
+              <p>
+                Discover black-sand shores and sleepy
+                fishing villages away from the crowds.
+              </p>
+              <a href="#newsletter" class="read">Read the story →</a>
+            </div>
+
+          </article>
+
+          <article class="post" data-category="mountains">
+
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Green mountain valley">
+              <span class="tag">Mountain hideaways</span>
+            </div>
+
+            <div class="post-body">
+              <div class="meta">SLOVENIA · 4 MIN READ</div>
+              <h3>The valley beyond the postcard</h3>
+              <p>
+                Emerald water, farm-to-table suppers and a trail
+                with no crowds in sight.
+              </p>
+              <a href="#newsletter" class="read">Read the story →</a>
+            </div>
+
+          </article>
+
+          <article class="post" data-category="culture">
+
+            <div class="post-image">
+              <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=900&q=80" alt="Italian seaside village">
+              <span class="tag">Culture & corners</span>
+            </div>
+
+            <div class="post-body">
+              <div class="meta">ITALY · 6 MIN READ</div>
+              <h3>Small-town days in Liguria</h3>
+              <p>
+                Take the local train, order the pesto and let
+                the colourful coast surprise you.
+              </p>
+              <a href="#newsletter" class="read">Read the story →</a>
+            </div>
+
+          </article>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- QUOTE -->
+
+    <section class="quote-band">
+
+      <blockquote>
+        "The best places aren't always the ones you planned
+        to find. Sometimes they're the ones that find you."
+      </blockquote>
+
+      <p>— A note from the road</p>
+
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="wrap about" id="about">
+
+      <div class="about-image">
+        <img
+          src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=900&q=85"
+          alt="Peaceful forest landscape">
+      </div>
+
+      <div>
+
+        <div class="eyebrow">A little about this atlas</div>
+
+        <h2>Hello, fellow curious soul.</h2>
+
+        <p>
+          I'm Alex — a curious traveller, enthusiastic map-folder
+          and collector of small moments. Hidden Atlas is my
+          corner of the internet for sharing the places that
+          stay with you.
+        </p>
+
+        <p>
+          No checklists. No rushing. Just thoughtful travel notes
+          to help you find your own kind of elsewhere.
+        </p>
+
+        <div class="signature">
+          See you out there, Alex ✳
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- NEWSLETTER -->
+
+    <section class="newsletter" id="newsletter">
+
+      <div class="eyebrow">Letters from elsewhere</div>
+
+      <h2>A little wonder in your inbox.</h2>
+
+      <p>
+        Monthly travel notes, hidden places and ideas
+        for your next escape.
+      </p>
+
+      <form class="subscribe" id="subscribe-form">
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Your email address"
+          required>
+
+        <button type="submit">
+          Send me postcards ↗
+        </button>
+
+      </form>
+
+      <div id="form-message"></div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="wrap">
+      © 2026 HIDDEN ATLAS · MADE FOR THE WANDERERS
+      <p>INSTAGRAM · PINTEREST · SAY HELLO</p>
+      TAKE THE SCENIC ROUTE ↗
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    // BLOG CATEGORY FILTER
+
+    const filterButtons = document.querySelectorAll('.filter');
+    const posts = document.querySelectorAll('.post');
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener('click', () => {
+
+        filterButtons.forEach(item =>
+          item.classList.remove('active')
+        );
+
+        button.classList.add('active');
+
+        const selected = button.dataset.filter;
+
+        posts.forEach(post => {
+
+          if (
+            selected === 'all' ||
+            post.dataset.category === selected
+          ) {
+            post.style.display = '';
+          } else {
+            post.style.display = 'none';
+          }
+
+        });
+
+      });
+
+    });
+
+    // NEWSLETTER FORM
+
+    document.getElementById('subscribe-form')
+      .addEventListener('submit', function(event) {
+
+        event.preventDefault();
+
+        const email = document.getElementById('email').value;
+
+        document.getElementById('form-message').textContent =
+          'Thank you! Your email is ready for our newsletter service: ' + email;
+
+        this.reset();
+
+      });
+
+  </script>
+
+</body>
+</html>
+
+```
+
+Note: This website uses external Unsplash images and Google Fonts, so an internet connection is needed for those resources. The newsletter is a frontend demo, not a working email subscription service.
